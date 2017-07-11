@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class CameraControls : MonoBehaviour {
 
-	// TODO
+	public float scrollVelocity = 4f;
+
+	void Update() {
+		float scrollDirection = Input.GetAxis("Mouse ScrollWheel");
+		if (scrollDirection != 0f) {
+			Camera.main.orthographicSize -= scrollDirection * scrollVelocity;
+		}
+	}
 }

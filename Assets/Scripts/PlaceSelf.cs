@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlaceSelf : MonoBehaviour {
 
 	void Start () {
-		Debug.Log(this.transform.position);
-
 		RaycastHit hit;
 		Vector3 down = new Vector3(0, -1, 0);
 		if (Physics.Raycast(this.transform.position, down, out hit)) {

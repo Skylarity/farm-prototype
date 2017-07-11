@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour {
 
-	public Transform cube;
+	public Transform[] canPlace;
+	private Transform toPlace;
 	
-	// Update is called once per frame
+	void Start() {
+		toPlace = canPlace[0];
+	}
+
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
 			RaycastHit hit;
@@ -16,7 +20,7 @@ public class TileManager : MonoBehaviour {
 				if (hit.collider.tag == "Ground") {
 					float offset = 1000f;
 					Vector3 position = new Vector3(Mathf.Floor(hit.point.x + 0.5f), offset, Mathf.Floor(hit.point.z + 0.5f));
-					Instantiate(cube, position, Quaternion.identity);
+					Instantiate(toPlace, position, Quaternion.identity);
 				} else {
 					Destroy(hit.transform.gameObject);
 				}
